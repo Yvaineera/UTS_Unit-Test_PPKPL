@@ -16,7 +16,9 @@ def run_cli(service: GroupService):
         if choice == "1":
             name = input("Enter group name: ")
             members = int(input("Enter number of members: "))
-            if service.add(name, members):
+            if not name.strip():
+                print("❌ Name cannot be empty.")
+            elif service.add(name, members):
                 print("✅ Group added.")
             else:
                 print("⚠️ Group already exists.")

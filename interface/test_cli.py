@@ -29,7 +29,7 @@ class TestGroupCLI(unittest.TestCase):
     def test_add_group_missing_name(self, mock_input):
         with patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
             run_cli(self.service)
-            self.assertIn("⚠️ Group already exists.", mock_stdout.getvalue())
+            self.assertIn("❌ Name cannot be empty.", mock_stdout.getvalue())
 
     @patch('builtins.input', side_effect=['2', '6'])
     def test_browse_existing_group(self, mock_input):
